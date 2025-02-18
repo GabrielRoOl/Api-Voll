@@ -3,7 +3,6 @@ package br.com.med.voll.api.model;
 import br.com.med.voll.api.dto.DadosCadastroMedico;
 import br.com.med.voll.api.enums.Especialidade;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,15 +21,10 @@ public class Medico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     private String name;
 
-    @Column(unique = true)
-    @NotBlank
     private String email;
 
-    @NotBlank
-    @Column(unique = true)
     private String crm;
 
     @Enumerated(EnumType.STRING)
