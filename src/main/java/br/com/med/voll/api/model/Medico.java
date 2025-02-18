@@ -1,5 +1,6 @@
 package br.com.med.voll.api.model;
 
+import br.com.med.voll.api.dto.DadosCadastroMedico;
 import br.com.med.voll.api.enums.Especialidade;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -37,6 +38,13 @@ public class Medico {
 
     @Embedded
     private Endereco endereco;
+
+    public Medico(DadosCadastroMedico dados) {
+        this.name = dados.nome();
+        this.crm = dados.crm();
+        this.email = dados.email();
+        this.endereco = new Endereco(dados.endereco());
+    }
 
     @Override
     public final boolean equals(Object o) {
