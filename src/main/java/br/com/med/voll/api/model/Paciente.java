@@ -13,17 +13,19 @@ public class Paciente {
     private Long id;
     private String nome;
     private String cpf;
+    private String telefone;
 
     @Embedded
     private Endereco endereco;
 
     public Paciente(){}
 
-    public Paciente(String cpf, Endereco endereco, Long id, String nome) {
+    public Paciente(String cpf, Endereco endereco, Long id, String nome, String telefone) {
         this.cpf = cpf;
         this.endereco = endereco;
         this.id = id;
         this.nome = nome;
+        this.telefone = telefone;
     }
 
     public String getCpf() {
@@ -56,5 +58,13 @@ public class Paciente {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 }
