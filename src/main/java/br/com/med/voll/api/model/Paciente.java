@@ -1,8 +1,7 @@
 package br.com.med.voll.api.model;
 
+import br.com.med.voll.api.dto.DadosPacienteDTO;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "tb_paciente")
@@ -26,6 +25,13 @@ public class Paciente {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
+    }
+
+    public Paciente(DadosPacienteDTO dados) {
+        this.cpf = dados.cpf();
+        this.nome = dados.nome();
+        this.telefone = dados.telefone();
+        this.endereco = new Endereco(dados.endereco());
     }
 
     public String getCpf() {
