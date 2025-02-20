@@ -1,15 +1,16 @@
 package br.com.med.voll.api.controllers;
 
+import br.com.med.voll.api.dto.DadosListagemPacienteDTO;
 import br.com.med.voll.api.dto.DadosPacienteDTO;
 import br.com.med.voll.api.model.Paciente;
 import br.com.med.voll.api.repositories.PacienteRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("paciente")
@@ -24,4 +25,8 @@ public class PacienteController {
         repository.save(new Paciente(dados));
     }
 
+    @GetMapping
+    public Page<DadosListagemPacienteDTO> listarPacientes(@PageableDefault(size = 10, page = 0, sort = {"nome"}) Pageable pageable){
+        return repository.findAll(pageable).map(DadosListagemPacienteDTO::new);
+    }
 }
