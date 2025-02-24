@@ -1,8 +1,10 @@
 package br.com.med.voll.api.model;
 
+import br.com.med.voll.api.dto.DadosAtualizaMedico;
 import br.com.med.voll.api.dto.DadosCadastroMedico;
 import br.com.med.voll.api.enums.Especialidade;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -118,4 +120,14 @@ public class Medico {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
 
+    public void atualizarInformacoes(@Valid DadosAtualizaMedico dados) {
+        if(dados.name() != null)
+            this.name = dados.name();
+
+        if(dados.telefone() != null)
+            this.telefone = dados.telefone();
+
+        if(dados.endereco() != null)
+            this.endereco.atualizarInformacoes(dados.endereco());
+    }
 }
