@@ -1,5 +1,6 @@
 package br.com.med.voll.api.controllers;
 
+import br.com.med.voll.api.dto.DadosAtualizaMedico;
 import br.com.med.voll.api.dto.DadosCadastroMedico;
 import br.com.med.voll.api.dto.DadosListagemMedico;
 import br.com.med.voll.api.model.Medico;
@@ -30,5 +31,12 @@ public class MedicoController {
     @GetMapping
     public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, page = 0, sort = {"name"}) Pageable paginacao){
         return repository.findAll(paginacao).map(DadosListagemMedico::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizaMedico dados){
+        var medico = repository.getReferenceById(dados.id());
+        medico.atualizarInformacoes(dados);
     }
 }
