@@ -19,9 +19,12 @@ public class Paciente {
     @Embedded
     private Endereco endereco;
 
+    private boolean ativo;
+
     public Paciente(){}
 
-    public Paciente(String cpf, Endereco endereco, Long id, String nome, String telefone) {
+    public Paciente(boolean ativo, String cpf, Endereco endereco, Long id, String nome, String telefone) {
+        this.ativo = ativo;
         this.cpf = cpf;
         this.endereco = endereco;
         this.id = id;
@@ -85,5 +88,9 @@ public class Paciente {
 
         if(dados.endereco() != null)
             this.endereco.atualizarInformacoes(dados.endereco());
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }
