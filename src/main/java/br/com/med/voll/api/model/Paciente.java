@@ -93,4 +93,8 @@ public class Paciente {
     public void excluir() {
         this.ativo = false;
     }
+
+    public void ativa() {
+        this.ativo = true;
+    }
 }
