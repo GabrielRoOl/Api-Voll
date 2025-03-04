@@ -1,7 +1,7 @@
 package br.com.med.voll.api.domain.model;
 
 import br.com.med.voll.api.dto.DadosAtualizaPaciente;
-import br.com.med.voll.api.dto.DadosPacienteDTO;
+import br.com.med.voll.api.dto.DadosCadastroPacienteDTO;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 
@@ -19,7 +19,8 @@ public class Paciente {
     @Embedded
     private Endereco endereco;
 
-    private boolean ativo;
+    @Column(nullable = false)
+    private boolean ativo = true;
 
     public Paciente(){}
 
@@ -32,7 +33,7 @@ public class Paciente {
         this.telefone = telefone;
     }
 
-    public Paciente(DadosPacienteDTO dados) {
+    public Paciente(DadosCadastroPacienteDTO dados) {
         this.cpf = dados.cpf();
         this.nome = dados.nome();
         this.telefone = dados.telefone();
