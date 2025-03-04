@@ -1,4 +1,4 @@
-package br.com.med.voll.api.model;
+package br.com.med.voll.api.domain.model;
 
 import br.com.med.voll.api.dto.DadosAtualizaMedico;
 import br.com.med.voll.api.dto.DadosCadastroMedico;
@@ -8,9 +8,6 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.proxy.HibernateProxy;
-
-import java.util.Objects;
 
 @Entity(name = "Medico")
 @Table(name = "tb_medico")

@@ -1,4 +1,4 @@
-package br.com.med.voll.api.model;
+package br.com.med.voll.api.domain.model;
 
 import br.com.med.voll.api.dto.DadosAtualizaPaciente;
 import br.com.med.voll.api.dto.DadosPacienteDTO;
