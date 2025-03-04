@@ -3,7 +3,7 @@ package br.com.med.voll.api.controllers;
 import br.com.med.voll.api.dto.DadosAtualizaPaciente;
 import br.com.med.voll.api.dto.DadosDetalhamentoPacienteDTO;
 import br.com.med.voll.api.dto.DadosListagemPacienteDTO;
-import br.com.med.voll.api.dto.DadosPacienteDTO;
+import br.com.med.voll.api.dto.DadosCadastroPacienteDTO;
 import br.com.med.voll.api.domain.model.Paciente;
 import br.com.med.voll.api.repositories.PacienteRepository;
 import jakarta.validation.Valid;
@@ -27,7 +27,7 @@ public class PacienteController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity cadastrarPaciente(@RequestBody @Valid DadosPacienteDTO dados, UriComponentsBuilder uriBuilder){
+    public ResponseEntity cadastrarPaciente(@RequestBody @Valid DadosCadastroPacienteDTO dados, UriComponentsBuilder uriBuilder){
         Paciente paciente = new Paciente(dados);
         repository.save(paciente);
         URI uri = uriBuilder.path("/pacientes/{id}").buildAndExpand(paciente.getId()).toUri();
