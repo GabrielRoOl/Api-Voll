@@ -1,5 +1,6 @@
 package br.com.med.voll.api.domain.model;
 
+import br.com.med.voll.api.domain.model.endereco.Endereco;
 import br.com.med.voll.api.dto.DadosAtualizaMedico;
 import br.com.med.voll.api.dto.DadosCadastroMedico;
 import br.com.med.voll.api.enums.Especialidade;
