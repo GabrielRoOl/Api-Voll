@@ -1,4 +1,4 @@
-package br.com.med.voll.api.domain.model;
+package br.com.med.voll.api.domain.model.endereco;
 
 import br.com.med.voll.api.dto.DadosEndereco;
 import jakarta.persistence.Embeddable;

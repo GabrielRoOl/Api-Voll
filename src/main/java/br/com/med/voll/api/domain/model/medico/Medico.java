@@ -1,4 +1,4 @@
-package br.com.med.voll.api.domain.model;
+package br.com.med.voll.api.domain.model.medico;
 
 import br.com.med.voll.api.domain.model.endereco.Endereco;
 import br.com.med.voll.api.dto.DadosAtualizaMedico;
