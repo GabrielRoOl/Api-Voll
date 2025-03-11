@@ -12,15 +12,15 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String senha;
     private String login;
 
     public Usuario(){}
 
-    public Usuario(Long id, String nome, String senha) {
+    public Usuario(Long id, String senha, String login) {
         this.id = id;
-        this.nome = nome;
-        this.login = senha;
+        this.senha = senha;
+        this.login = login;
     }
 
     public Long getId() {
@@ -31,12 +31,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getLogin() {
