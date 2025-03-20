@@ -15,6 +15,7 @@ Este projeto é uma aplicação Java com Spring Boot que fornece APIs para o con
 - PostgreSQL
 - Trello
 - Docker
+- JWT 
 ## Antes de começar
 Certifique-se de ter instalado em sua máquina:
 - Java Development Kit (JDK)
