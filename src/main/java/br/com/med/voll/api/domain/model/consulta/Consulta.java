@@ -3,7 +3,12 @@ package br.com.med.voll.api.domain.model.consulta;
 import br.com.med.voll.api.domain.model.medico.Medico;
 import br.com.med.voll.api.domain.model.paciente.Paciente;
 import jakarta.persistence.*;
-import lombok.*;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +16,8 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@Entity
+@Table(name = "tb_consulta")
 public class Consulta {
 
     @Id
@@ -28,6 +34,10 @@ public class Consulta {
 
     private LocalDateTime data;
 
-    public Consulta() {
+    public Consulta(Long id, Medico medico, Paciente paciente, @NotNull @Future LocalDateTime data) {
+        this.id = id;
+        this.medico = medico;
+        this.paciente = paciente;
+        this.data = data;
     }
 }
