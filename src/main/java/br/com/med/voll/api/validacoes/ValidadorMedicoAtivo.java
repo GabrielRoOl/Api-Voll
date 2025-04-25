@@ -1,11 +1,15 @@
 package br.com.med.voll.api.validacoes;
 
 import br.com.med.voll.api.dto.DadosAgendamentoConsultaDTO;
-import br.com.med.voll.api.exceptions.ValidacaoException;
+import br.com.med.voll.api.infra.exceptions.ValidacaoException;
 import br.com.med.voll.api.repositories.MedicoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class ValidadorMedicoAtivo {
+@Component
+public class ValidadorMedicoAtivo implements ValidadorAgendamentoConsulta {
 
+    @Autowired
     private MedicoRepository repository;
 
     public void validar(DadosAgendamentoConsultaDTO dados) {
