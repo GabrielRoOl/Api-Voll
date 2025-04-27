@@ -8,4 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PacienteRepository extends JpaRepository<Paciente, Long> {
     boolean findAtivoById(@NotNull Long aLong);
+
+    boolean existsByIdAndAtivoTrue(@NotNull Long id);
+
 }
