@@ -2,6 +2,7 @@ package br.com.med.voll.api.domain.model.consulta;
 
 import br.com.med.voll.api.domain.model.medico.Medico;
 import br.com.med.voll.api.dto.DadosAgendamentoConsultaDTO;
+import br.com.med.voll.api.dto.DadosDetalhamentoConsultaDTO;
 import br.com.med.voll.api.infra.exceptions.ValidacaoException;
 import br.com.med.voll.api.repositories.ConsultaRepository;
 import br.com.med.voll.api.repositories.MedicoRepository;
@@ -29,7 +30,7 @@ public class AgendaDeConsultas {
     private List<ValidadorAgendamentoConsulta> validadores;
 
     @Transactional
-    public void agendar(DadosAgendamentoConsultaDTO dados) {
+    public DadosDetalhamentoConsultaDTO agendar(DadosAgendamentoConsultaDTO dados) {
         if (!pacienteRepository.existsById(dados.idPaciente())) {
             throw new ValidacaoException("Id do paciente informado não existe");
         }
@@ -44,6 +45,8 @@ public class AgendaDeConsultas {
         var consulta = new Consulta(null, medico, paciente, dados.data());
 
         consultaRepository.save(consulta);
+
+        return new DadosDetalhamentoConsultaDTO(consulta);
     }
 
     private Medico escolherMedico(DadosAgendamentoConsultaDTO dados) {
