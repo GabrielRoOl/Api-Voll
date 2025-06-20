@@ -9,6 +9,7 @@ public record DadosCadastroPacienteDTO(
         @NotBlank String nome,
         @NotBlank @Column(unique = true, nullable = false) String cpf,
         @NotBlank String telefone,
+        String s,
         @NotNull @Valid DadosEndereco endereco
-        ) {
+) {
 }
